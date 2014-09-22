@@ -44,8 +44,23 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 PRODUCT_COPY_FILES += \
-    device/lge/hammerhead/audio_policy.conf:system/etc/audio_policy.conf \
     device/lge/hammerhead/mixer_paths.xml:system/etc/mixer_paths.xml
+
+# V4A Configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/v4a/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/v4a/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/v4a/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/v4a/libaudiopreprocessing.so:system/lib/soundfx/libaudiopreprocessing.so \
+    $(LOCAL_PATH)/v4a/libbundlewrapper.so:system/lib/soundfx/libbundlewrapper.so \
+    $(LOCAL_PATH)/v4a/libdownmix.so:system/lib/soundfx/libdownmix.so \
+    $(LOCAL_PATH)/v4a/libeffectproxy.so:system/lib/soundfx/libeffectproxy.so \
+    $(LOCAL_PATH)/v4a/libfmas.so:system/lib/soundfx/libfmas.so \
+    $(LOCAL_PATH)/v4a/libldnhncr.so:system/lib/soundfx/libldnhncr.so \
+    $(LOCAL_PATH)/v4a/libqcomvoiceprocessing.so:system/lib/soundfx/libqcomvoiceprocessing.so \
+    $(LOCAL_PATH)/v4a/libreverbwrapper.so:system/lib/soundfx/libreverbwrapper.so \
+    $(LOCAL_PATH)/v4a/libv4a_fx_ics.so:system/lib/soundfx/libv4a_fx_ics.so \
+    $(LOCAL_PATH)/v4a/libvisualizer.so:system/lib/soundfx/libvisualizer.so
 
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/media_codecs.xml:system/etc/media_codecs.xml \
@@ -142,9 +157,6 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors
-
-PRODUCT_COPY_FILES += \
-    device/lge/hammerhead/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_PACKAGES += \
     libqomx_core \
@@ -297,13 +309,17 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
+    lpa.decode=false \
+    lpa.releaselock=false \
+    lpa.use-stagefright=false \
+    tunnel.decode=false \
     persist.audio.handset.mic.type=digital \
     persist.audio.dualmic.config=endfire \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=false \
+    persist.audio.fluence.speaker=true \
     af.resampler.quality=4 \
-    audio.offload.buffer.size.kb=32 \
+    audio.offload.buffer.size.kb=64 \
     audio.offload.gapless.enabled=false \
     av.offload.enable=true
 
