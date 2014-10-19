@@ -117,6 +117,9 @@ TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 TARGET_GCC_VERSION_ARM := 4.9-sm
 TARGET_GCC_VERSION_AND := 4.8-sm
 
+# Enable ArchiDroid Optimizations
+USE_ARCH_OPTIMIZATIONS=true
+
 # The list below is order dependent
 BOARD_SEPOLICY_UNION := \
        device.te \
