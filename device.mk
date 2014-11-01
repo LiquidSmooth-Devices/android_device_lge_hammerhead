@@ -105,9 +105,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
-PRODUCT_COPY_FILES += \
-    device/lge/hammerhead/format-system.sh:system/extras/format-system.sh
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
