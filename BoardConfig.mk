@@ -112,6 +112,14 @@ BOARD_SEPOLICY_DIRS += \
 TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
+# Liquid Optimizations
+USE_O3 := true
+STRICT := true
+GRAPHITE := true
+LTO := true
+TARGET_ENABLE_UKM := true
+LIQUID_CHANGELOG := true
+
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
        app.te \
